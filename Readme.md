@@ -54,7 +54,7 @@ rm swissprot.tar.gz.md5
 ## Clone the package
 
 ```
-git clone https://github.com/RosettaCommons/RoseTTAFold.git
+git clone https://github.com/hurraygong/SCpre-seq.git
 cd SCpre-seq
 ```
 ## Usage
