@@ -1,4 +1,4 @@
-#ReadMe
+# README
 SCpre-seq, an end-to-end sequence-based tool using a residue level mutation-based 3D structure information to assess single point mutation effects on protein thermodynamic stability and applying to dingle-domain monomeric proteins. 
 ## Install dependencies
 #### 1. Install Anaconda3
