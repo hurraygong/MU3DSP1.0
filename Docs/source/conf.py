@@ -66,8 +66,8 @@ exclude_patterns = []
 import sphinx_rtd_theme
 #import renku_sphinx_theme
 #html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-#html_theme = "sphinx_rtd_theme"
-html_theme = 'renku'
+html_theme = "sphinx_rtd_theme"
+#html_theme = 'renku'
 html_theme_options = dict(navigation_depth=1, titles_only=True)
 github_repo = "SCpre-seq"
 github_doc_root = 'https://github.com/hurraygong/SCpre-seq/tree/master/Docs'
@@ -76,7 +76,7 @@ github_doc_root = 'https://github.com/hurraygong/SCpre-seq/tree/master/Docs'
 
 
 def setup(app):
-    app.add_stylesheet("custom.css")
+    app.add_css_file("custom.css")
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
