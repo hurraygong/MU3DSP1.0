@@ -64,13 +64,13 @@ exclude_patterns = []
 #
 
 import sphinx_rtd_theme
-import renku_sphinx_theme
+#import renku_sphinx_theme
 #html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 #html_theme = "sphinx_rtd_theme"
 html_theme = 'renku'
 html_theme_options = dict(navigation_depth=1, titles_only=True)
 github_repo = "SCpre-seq"
-github_doc_root = 'https://github.com/hurraygong/SCpre-seq/Docs/tree/master/scgnndocs'
+github_doc_root = 'https://github.com/hurraygong/SCpre-seq/tree/master/Docs'
 #github_nb_repo = "scGNN_notebooks"
 #html_static_path = ["_static"]
 
