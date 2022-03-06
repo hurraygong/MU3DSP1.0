@@ -22,7 +22,7 @@ The S proteins form homo-trimers on the virus surface and are necessary for the 
 
 .. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/Figure5.jpg
   :width: 200px
-  :align: center
+  :align: left
 
 .. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/PictureS9.jpg
   :width: 200px

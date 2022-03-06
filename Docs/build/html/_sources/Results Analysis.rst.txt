@@ -5,13 +5,13 @@ SCpre-seq
 ^^^^^^^^^^^^^^^^
 
 Performance on multiple models according to mutation-based structure information
-*******************************
+*****************************************************************************************
 
 
 
 
 SCpre-seq achieves state-of-the-art performance on testing sets S543
-********************************
+*****************************************************************************
 
 
 
@@ -19,7 +19,7 @@ SCpre-seq achieves state-of-the-art performance on testing sets S543
 
 
 SCpre-seq achieves state-of-the-art performance on testing set S236
-********************************
+*****************************************************************************
 
 
 

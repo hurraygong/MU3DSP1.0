@@ -1,10 +1,9 @@
 Sequence-based stability changes prediction
 ============================================================
 
-.. image:: https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/pictures/Figure.2.jpg
+.. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/Figure.2.jpg
    :width: 400px
    :align: left
-
 
 
 SCpre-seq, a residue level 3D structure-based prediction tool to assess single point mutation effects on protein thermodynamic stability and applying to dingle-domain monomeric proteins. Given protein sequence with single mutations as the input, the proposed model integrated both sequence level features of mutant residues and residue level mutation-based 3D structure features.
@@ -42,15 +41,9 @@ Your help to improve SCpre-seq is highly appreciated.
    Quickstart
    Mutation structure preparation
    Results Analysis
+   Casestudy
    Release
    References
    Contact
 
-.. toctree::
-   :caption: Example Datasets
-   :maxdepth: 1
-   :hidden:
-
-   Benchmark data
-   Casestudy
 
