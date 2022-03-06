@@ -544,7 +544,6 @@ if __name__ == "__main__":
     parser.add_argument("-v", "--version", action="version")
     parser.add_argument("-o", "--outfilename",required=True,  type=str,help='Output files name')
 
-    #https: // xgxm.xueguoxue.com /  # /user/receiveLearnCard?cardId=d7ce3f00264d23
 
     args = parser.parse_args()
 
@@ -708,4 +707,4 @@ if __name__ == "__main__":
     bst = lgb.Booster(model_file='model_rmse_0.664_0.513_0920.txt')
     preds_online = bst.predict([preFeatures], num_iteration=bst.best_iteration)  # 输出概率
     print(preds_online[0])
-    np.save(args.outfilename + '.npy', preFeatures)
+    #np.save(args.outfilename + '.npy', preFeatures)

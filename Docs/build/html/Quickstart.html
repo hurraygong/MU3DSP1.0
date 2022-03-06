@@ -182,6 +182,48 @@
 <div class="section" id="quikly-run-scgnn">
 <h2>Quikly Run scGNN<a class="headerlink" href="#quikly-run-scgnn" title="Permalink to this headline">¶</a></h2>
 <p>SCpre-seq is a example to run SCpre-seq.</p>
+<blockquote>
+<div><p>parser = argparse.ArgumentParser(description=’Download PDBfiles from G2s &amp; get features’)
+# parser.add_argument(‘-l’, ‘–variant-site’, dest=’variant_list’, type=str,
+#                     required=True, help=’A list of variants, one per line in the format “POS WT MUT”, a file’)</p>
+<dl class="simple">
+<dt>parser.add_argument(‘-w’, ‘–variant-wildtype’, dest=’variant_wildtype’, type=str,</dt><dd><p>required=True, help=’wild-type residue, for example residue “A”’)</p>
+</dd>
+<dt>parser.add_argument(‘-m’, ‘–variant-mutation’, dest=’variant_mutation’, type=str,</dt><dd><p>required=True, help=’mutation residue, for example residue “A”’)</p>
+</dd>
+<dt>parser.add_argument(‘-p’, ‘–variant-position’, dest=’variant_position’, type=int,</dt><dd><p>required=True, help=’variant position in sequence’)</p>
+</dd>
+<dt>parser.add_argument(‘-s’, ‘–sequence’,  type=str,</dt><dd><p>required=True, help=’A protein primary sequence in a file in the format fasta.’)</p>
+</dd>
+</dl>
+<p># background mutation Features from G2s</p>
+<dl class="simple">
+<dt>parser.add_argument(‘–pdbpath’,  type=str,default=’/storage/htc/joshilab/jghhd/SC/stability_change1/datasets_s1676_seq/PDB/’,</dt><dd><p>required=True, help=’A path for storage matched PDB structures’)</p>
+</dd>
+<dt>parser.add_argument(‘–dssppath’, type=str,default=’/storage/htc/joshilab/jghhd/SC/stability_change1/datasets_s1676_seq/dssp/’,</dt><dd><p>required=True, help=’A path for storage dssp output files’)</p>
+</dd>
+<dt>parser.add_argument(‘–dsspbin’,  type=str,default=’mkdssp’,</dt><dd><p>required=True, help=’Execute bin path for DSSP’)</p>
+</dd>
+<dt>parser.add_argument(‘–psiblastbin’,  type=str,default=’psiblast’,</dt><dd><p>required=True, help=’Execute bin path for psiblast’)</p>
+</dd>
+<dt>parser.add_argument(‘–hhblitsbin’,  type=str,default=’hhblits’,</dt><dd><p>required=True, help=’Execute bin path for hhblits’)</p>
+</dd>
+<dt>parser.add_argument(‘–psiblastout’,  type=str,default=’./Sequence/psiout’,</dt><dd><p>required=True, help=’A path for storage psiblast out files’)</p>
+</dd>
+<dt>parser.add_argument(‘–psiblastpssm’,  type=str,default=’./Sequence/pssmout’,</dt><dd><p>required=True, help=’A path for storage psiblast pssm files’)</p>
+</dd>
+<dt>parser.add_argument(‘–psiblastdb’,  type=str,default=’/home/gongjianting/tools/PsiblastDB/swissprot’,</dt><dd><p>required=True, help=’background database for align in psiblast’)</p>
+</dd>
+<dt>parser.add_argument(‘–hhblitsdb’,  type=str,default=’/home/gongjianting/tools/HHsuitDB/UniRef30_2020_06’,</dt><dd><p>required=True, help=’background database for align in tools hhblits’)</p>
+</dd>
+<dt>parser.add_argument(‘–hhblitsout’,  type=str,default=’./Sequence/hhblitout’,</dt><dd><p>required=True, help=’A path for storage hhblits hhr files’)</p>
+</dd>
+<dt>parser.add_argument(‘–hhblitshhm’,  type=str,default=’./Sequence/hhmout’,</dt><dd><p>required=True, help=’A path for storage hhblits hhm files’)</p>
+</dd>
+</dl>
+<p>parser.add_argument(“-v”, “–version”, action=”version”)
+parser.add_argument(“-o”, “–outfilename”,required=True,  type=str,help=’Output files name’)</p>
+</div></blockquote>
 </div>
 </div>
 

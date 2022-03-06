@@ -4,11 +4,25 @@ Results Analysis
 SCpre-seq
 ^^^^^^^^^^^^^^^^
 
-Imputation performance of scGNN
+Performance on multiple models according to mutation-based structure information
 *******************************
 
-Cell clustering results of scGNN
+
+
+
+SCpre-seq achieves state-of-the-art performance on testing sets S543
 ********************************
+
+
+
+
+
+
+SCpre-seq achieves state-of-the-art performance on testing set S236
+********************************
+
+
+
 scGNN showed significant enhancement in cell clustering compared to the clustering tool (e.g., Seurat) when using the raw data. The comparison was conducted on four tools (i.e., Seurat, CIDR, RaceID, and Monocle3) using four benchmark datasets. ARI of each test is indicated on each UMAP, comparing the predicted cell clusters to the benchmark labels.
 
 .. image:: https://raw.githubusercontent.com/hurraygong/scGNN/master/pictures/FigureS5.png

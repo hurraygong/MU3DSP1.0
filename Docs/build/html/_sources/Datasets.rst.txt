@@ -1,7 +1,7 @@
 Datasets
 --------
 
-Datasets for train
+Datasets for training, testing and casestudy
 ^^^^^^^^^^^^^^^^^^
 Our work used datasets S1676, S236, S543 to investigate the prediction of stability changes on protein (Table S1).
 
@@ -13,8 +13,6 @@ Table S1 Datasets used to build, evaluate and independently test in SCpre-seq
 |  S1676  |  1676 (67)               |  1,223 (64)                      |  424 (53)                      |  29(4)                         | Unique Variants/Averaged DDG|
 +---------+--------------------------+----------------------------------+--------------------------------+--------------------------------+-----------------------------+
 |  S236   |  236 (22)                |  192 (18)                        |  42 (14)                       |  2(2)                          | Unique Variants/Averaged DDG|
-+---------+--------------------------+----------------------------------+--------------------------------+--------------------------------+-----------------------------+
-|  S232   |  232 (21)                |  190 (18)                        |  42 (13)                       |  2(2)                          | Unique Variants/Averaged DDG|
 +---------+--------------------------+----------------------------------+--------------------------------+--------------------------------+-----------------------------+
 |  S543   |  543(55)                 |  426(48)                         |  107(37)                       |  10(6)                         | Unique Variants/Averaged DDG|
 +---------+--------------------------+----------------------------------+--------------------------------+--------------------------------+-----------------------------+
@@ -30,8 +28,11 @@ Pires, D.E., D.B. Ascher, and T.L. Blundell, mCSM: predicting the effects of mut
 Datasets with features
 ^^^^^^^^^^^^^^^^^^^^^^
 Downloading
+
 - `S1676 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/S1676_Features_sorted.csv>`_
+
 - `S543 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/S543_Features_sorted.csv>`_
+
 - `S236 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/S236_Features_sorted.csv>`_
 
 
