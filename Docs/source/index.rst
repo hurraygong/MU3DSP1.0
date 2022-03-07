@@ -1,7 +1,7 @@
 Sequence-based stability changes prediction
 ============================================================
 
-.. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/Figure.2.jpg
+.. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/Figure.2.png
    :width: 400px
    :align: left
 
