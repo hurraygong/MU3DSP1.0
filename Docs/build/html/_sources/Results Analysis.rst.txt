@@ -8,16 +8,19 @@ To build a robust predicting protein stability changes model, dataset S1676 is u
 ** Table 1**. Performance of 10-Fold cross-validation on Dataset S1676
 
 .. image:: https://raw.githubusercontent.com/hurraygong/scGNN/master/pictures/Table1.png
-
+  :align: center
+  :width: 300px
 
 .. image:: https://raw.githubusercontent.com/hurraygong/scGNN/master/pictures/S1676bar.png
-
+  :align: center
+  :width: 300px
 
 
 SCpre-seq achieves state-of-the-art performance on testing set S236
 *****************************************************************************
 .. image:: https://raw.githubusercontent.com/hurraygong/scGNN/master/pictures/S236Picture2.png
-
+  :align: center
+  :width: 300px
 
 
 **Figure S5**. Clustering results of scGNN compared to existing clustering tools.
@@ -28,7 +31,8 @@ SCpre-seq achieves state-of-the-art performance on testing sets S543
 *****************************************************************************
 
 .. image:: https://raw.githubusercontent.com/hurraygong/scGNN/master/pictures/S543Picture3.png
-
+  :align: center
+  :width: 300px
 
 
 
