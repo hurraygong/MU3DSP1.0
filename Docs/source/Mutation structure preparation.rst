@@ -5,7 +5,8 @@ Mutation structure preparation
 
 
 .. image:: (https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/pictures/FigureS1.png)
-
+  :align: center
+  :width: 350px
 
 Mutation structure preparation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
