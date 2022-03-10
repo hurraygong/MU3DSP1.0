@@ -1,5 +1,7 @@
 # Python 3.6
-# Author: Jianting
+# A Simple Python template program reading G2S APIs
+# download PDBfiles and thier dssp files based on
+
 import requests
 import json
 import pickle
@@ -18,7 +20,6 @@ import lightgbm as lgb
 from sklearn import metrics
 from sklearn.metrics import *
 from scipy import stats
-
 # Setup API, e.g. https://g2s.genomenexus.org/api/alignments/uniprot/P02185/residueMapping?positionList=10
 # Can change to any valid URL in G2S API, UniprotID or positionist
 ############################### DSSP #################################
@@ -75,6 +76,7 @@ def Fea_parse(siglefea, msite):
     rasa = []
     angle = []
     for each in siglefea:
+        #print(each,msite)
         ss.append(each[0])
         rasa.append(float(each[1]) / maxASA[msite])
         angle.append(each[2:-3])
@@ -122,7 +124,7 @@ def get_siglesite(example, alldsspparsed):
     return mutafea
 
 def get_imprecise_match(example, alldsspparsed):
-
+    #print('###',example)
     pdbid = example[0].split('_')[0]
     pdbchain = example[0].split('_')[1]
     mutasite = example[-1]
@@ -133,6 +135,7 @@ def get_imprecise_match(example, alldsspparsed):
                 if eachsitekey.split('_')[0] == str(example[1]):
                     mutafea= alldsspparsed[pdbid][pdbchain][eachsitekey]
                     break
+    #print(mutafea)
     return mutafea
 ############################### DSSP #################################
 
@@ -192,6 +195,7 @@ def global_dist(example,alldsspparsed,dssppath=None,precise_match=True):
                 c = abs(float(Xfea[-1]) - float(muzca))
                 distance = (a * a + b * b + c * c) ** 0.5
                 distance1 = round(distance, 4)
+                # list1.append(distance1)
                 mutadict1.update({eachsitekey: distance1})
                 mutad2 = sorted(mutadict1.items(), key=lambda item: item[1])
     else:
@@ -209,6 +213,7 @@ def get_feamatrix(distencelist, r=10):
         eachitem = distencelist[z]
         if eachitem[1] <= r:
             aa_count = aa_count + 1
+            # print(eachitem[0])
             try:
                 pe[eachitem[0].split('_')[1]] = pe[eachitem[0].split('_')[1]] + 1
             except:
@@ -216,6 +221,7 @@ def get_feamatrix(distencelist, r=10):
 
     for key in ['A', 'V', 'L', 'I', 'M', 'C', 'F', 'W', 'Y', 'H', 'S', 'T', 'N',
           'Q', 'K', 'R', 'D', 'E', 'G', 'P']:
+    #for key in pe.keys():
         aa_distence.append(round(pe[key] / aa_count, 4))
 
     return aa_distence
@@ -229,9 +235,10 @@ def get_str_features(examples, alldsspparsed, dssppath=None,rd=10,singlePDB=True
         else:
             muta = get_feamatrix(dis, r=rd)
             mutafea.append(muta)
-
+        # mutafea.append(muta)
     if mutafea == []:
             meanfea = []
+        #pass
     else:
         if singlePDB!=True:
             meanfea = np.nanmean(np.array(mutafea), axis=0)
@@ -245,6 +252,7 @@ def file_name(file_dir, fileformat):
     # fileformat : like .pdb or .dssp
     L = []
     for dirpath, dirnames, filenames in os.walk(file_dir):
+        # print(dirpath, dirnames, filenames)
         for file in filenames:
             if os.path.splitext(file)[1] == fileformat:
                 L.append(os.path.join(dirpath, file))
@@ -292,12 +300,14 @@ def MuStructureFea(wildsites,mutasites,alldsspparsed,muta,wild,singlePDB=True):
         wildss, wildasa_all, wildasa_01, wildasa_me, wildangle, wildstr = MutationBasedFea(muta + wild)
         mutass, mutaasa_all, mutaasa_01, mutaasa_me, mutaangle, mutastr = MutationBasedFea(wild + muta)
     else:
+        # ddg.append(float(site.split()[-3]))
         if wildsites == []:
             wildss, wildasa_all, wildasa_01, wildasa_me, wildangle, wildstr = MutationBasedFea(muta + wild)
         else:
             wildss, wildasa_all, wildasa_01, wildasa_me, wildangle = get_global_features(wildsites, alldsspparsed, wild,
                                                                                          singlePDB=singlePDB)
             if wildss == []:
+                # print('**', site)
                 wildss, wildasa_all, wildasa_01, wildasa_me, wildangle, wildstr = MutationBasedFea(
                     muta + wild)
             else:
@@ -310,6 +320,7 @@ def MuStructureFea(wildsites,mutasites,alldsspparsed,muta,wild,singlePDB=True):
                                                                                          muta, singlePDB=singlePDB)
 
             if mutass == []:
+                # print('##', site)
                 mutass, mutaasa_all, mutaasa_01, mutaasa_me, mutaangle, mutastr = MutationBasedFea(
                     wild + muta)
             else:
@@ -328,6 +339,7 @@ def SecondStrucType(X,featype = 1):
     elif featype == 8:
         zzz1= np.zeros(8)
         zzz1[ssdict[X]] = 1
+    # print(ssdict[SS_wild_type])
     else:
         print('error')
     return zzz1
@@ -348,6 +360,7 @@ def  MuSecondStructure(wildss,mutass,inte='cancat',featype=1):
             return w.tolist()+m.tolist()
 
 def StrAngle(wildangle,mutaangle,AngleFeaType='PolarC'):
+    # angle
 
     #Polar coordinates = PolarC
     if AngleFeaType=='PolarC':
@@ -426,6 +439,7 @@ def Get_jData(url):
         # Loads (Load String) takes a Json file and converts into python data structure (dict or list, depending on JSON)
         # In this Example, jData are lists of Residues from Genome Mapping to Protein Structures
         jData = json.loads(myResponse.content)
+        # pring output
         return jData
     else:
         # If response code is not ok (200), print the resulting http error code with description
@@ -460,7 +474,9 @@ def setlocalpath(path):
 
     if not isExists:
         os.makedirs(path)
+        # print (path+' created successful')
     else:
+        # print (path+' dir exsit')
         pass
 
 
@@ -478,7 +494,16 @@ def Get_UnpID_Pos(filename):
                 pass
         else:
             pass
+    # pickle.dumps(entrylist, protocol=1)
     return entrylist
+
+
+class InputError(Exception):
+    def __init__(self,ErrorInfo):
+        super().__init__(self) #初始化父类
+        self.errorinfo=ErrorInfo
+    def __str__(self):
+        return self.errorinfo
 
 
 def checkargs(args):
@@ -516,20 +541,23 @@ if __name__ == "__main__":
     # background mutation Features from G2s
 
     parser.add_argument('--pdbpath',  type=str,default='/storage/htc/joshilab/jghhd/SC/stability_change1/datasets_s1676_seq/PDB/',
-                        required=True, help='A path for storage matched PDB structures')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
+
+
+
     parser.add_argument('--dssppath', type=str,default='/storage/htc/joshilab/jghhd/SC/stability_change1/datasets_s1676_seq/dssp/',
-                        required=True, help='A path for storage dssp output files')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--dsspbin',  type=str,default='mkdssp',
-                        required=True, help='Execute bin path for DSSP')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--psiblastbin',  type=str,default='psiblast',
-                        required=True, help='Execute bin path for psiblast')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--hhblitsbin',  type=str,default='hhblits',
-                        required=True, help='Execute bin path for hhblits')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
 
     parser.add_argument('--psiblastout',  type=str,default='./Sequence/psiout',
-                        required=True, help='A path for storage psiblast out files')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--psiblastpssm',  type=str,default='./Sequence/pssmout',
-                        required=True, help='A path for storage psiblast pssm files')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--psiblastdb',  type=str,default='/home/gongjianting/tools/PsiblastDB/swissprot',
                         required=True, help='background database for align in psiblast')
 
@@ -538,12 +566,15 @@ if __name__ == "__main__":
                         required=True, help='background database for align in tools hhblits')
 
     parser.add_argument('--hhblitsout',  type=str,default='./Sequence/hhblitout',
-                        required=True, help='A path for storage hhblits hhr files')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument('--hhblitshhm',  type=str,default='./Sequence/hhmout',
-                        required=True, help='A path for storage hhblits hhm files')
+                        required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
     parser.add_argument("-v", "--version", action="version")
-    parser.add_argument("-o", "--outfilename",required=True,  type=str,help='Output files name')
+    parser.add_argument("-o", "--outfile",type=bool, default=False,help='Whether save the result or not')
+    parser.add_argument("-printout", type=bool, default=True, help='Whether print the result or not')
+    parser.add_argument("-outpath", "--outfilepath", type=str,default='./',help='Output file path')
 
+    #https: // xgxm.xueguoxue.com /  # /user/receiveLearnCard?cardId=d7ce3f00264d23
 
     args = parser.parse_args()
 
@@ -565,6 +596,7 @@ if __name__ == "__main__":
     checkargs(args)
     sitesmapping = {}
 
+    ############# run psiblast #####################
     if not os.path.exists(args.psiblastout):
         os.makedirs(args.psiblastout)
     else:
@@ -575,7 +607,6 @@ if __name__ == "__main__":
     else:
         pass
 
-############# run blast #####################
     blastout = os.path.join(args.psiblastout,fastaid)
     blastpssmout = os.path.join(args.psiblastpssm,fastaid)
     if not os.path.exists(blastpssmout+'.pssm'):
@@ -586,6 +617,7 @@ if __name__ == "__main__":
 
 
 ############# run hhblits #####################
+
     if not os.path.exists(args.hhblitsout):
         os.makedirs(args.hhblitsout)
     else:
@@ -617,9 +649,10 @@ if __name__ == "__main__":
     # dssppath
     unp_wpm = fastaid + '_' + wildres + str(varpos) + mutares
     sitesmapping.update({unp_wpm: chain_position_list})
-
+    #print(sitesmapping)
 
     #checking PDBpath
+
     if not os.path.exists(args.pdbpath):
         os.makedirs(args.pdbpath)
     else:
@@ -629,6 +662,8 @@ if __name__ == "__main__":
         os.makedirs(args.dssppath)
     else:
         pass
+
+    #print(args.pdbpath,args.dssppath)
 
     for eachentry in PDB_id_list:
         localpath = os.path.join(args.pdbpath,eachentry.lower() + '.pdb')
@@ -650,6 +685,7 @@ if __name__ == "__main__":
 
     #find features and rm the results
     dssp = DSSPparser()
+    #print(dssp)
     alldsspparsed = dssp.dssp_paser(args.dssppath)
 
     # Dssp entrysites
@@ -659,9 +695,11 @@ if __name__ == "__main__":
 
     wildss, wildasa_all, wildasa_01, wildasa_me, wildangle, wildstr, mutass, mutaasa_all, mutaasa_01, mutaasa_me, mutaangle, mutastr = MuStructureFea(
         wildsites, mutasites, alldsspparsed, mutares, wildres, singlePDB=False)
+
     Rsa, Rss, Rrasa, AApsstr = DsspFea(wildss, wildasa_me, wildangle, wildstr,
                                        mutass, mutaasa_me, mutaangle, mutastr, AngleFeaType='PolarC', inte='minus',
                                        rasatype='cancat', strtype='minus', featype=3)
+    # print(Rsa, Rss, Rrasa, AApsstr)
     dsspfea = Rss + Rrasa
     AApsstr = AApsstr.tolist()
 
@@ -672,7 +710,7 @@ if __name__ == "__main__":
     for i in range(0, len(parameters[mutares])):
         DDpara.append(round(parameters[mutares][i] - parameters[wildres][i], 3))
 
-    # PSSM
+    ############################# PSSM
     Pssm = []
     PSSMtitle = {'A': 0, 'V': 19, 'L': 10, 'I': 9, 'M': 12, 'C': 4, 'F': 13, 'W': 17, 'Y': 18, 'H': 8, 'S': 15, 'T': 16,
                  'N': 2, 'Q': 5, 'K': 3, 'R': 1, 'D': 3, 'E': 6, 'G': 7, 'P': 14}
@@ -687,7 +725,7 @@ if __name__ == "__main__":
 
     Pssm = oripssm + DDpssm
 
-    ## HHM
+    ############################## HHM
     HHM = []
     hhm = ParseHHm()
     siteseqhhm = hhm.gethmmfeature(args.hhblitshhm)
@@ -700,11 +738,13 @@ if __name__ == "__main__":
     DDhhm = [mutahhm - wildhhm]
     HHM = orihhm + DDhhm
 
-    #features
-
     preFeatures = dsspfea + AApsstr + DDpara + Pssm  + HHM
-    #np.save('./FeaSsorted/'+args.outfilename+'.npy',preFeatures)
     bst = lgb.Booster(model_file='model_rmse_0.664_0.513_0920.txt')
     preds_online = bst.predict([preFeatures], num_iteration=bst.best_iteration)  # 输出概率
-    print(preds_online[0])
-    #np.save(args.outfilename + '.npy', preFeatures)
+    args.outfilename = fastaid + '_'+ wildres+str(varpos)+mutares
+    if args.outfile == True:
+        outfile = os.path.join(args.outfilepath, args.outfilename + '.npy')
+        np.save(outfile, preds_online[0])
+    if args.printout == True:
+        print(wildres+str(varpos)+mutares, round(preds_online[0],4))
+

@@ -3,14 +3,11 @@ Quickstart
 
 Quikly Run scGNN
 ^^^^^^^^^^^^^^^^
-SCpre-seq is a example to run SCpre-seq.
+This is the parameters to run SCpre-seq.
 
+::
 
-
-
-    parser = argparse.ArgumentParser(description='Download PDBfiles from G2s & get features')
-    # parser.add_argument('-l', '--variant-site', dest='variant_list', type=str,
-    #                     required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
+    parser.add_argument('-l', '--variant-site', dest='variant_list', type=str,required=True, help='A list of variants, one per line in the format "POS WT MUT", a file')
 
     parser.add_argument('-w', '--variant-wildtype', dest='variant_wildtype', type=str,
                         required=True, help='wild-type residue, for example residue "A"')
@@ -51,4 +48,14 @@ SCpre-seq is a example to run SCpre-seq.
     parser.add_argument('--hhblitshhm',  type=str,default='./Sequence/hhmout',
                         required=True, help='A path for storage hhblits hhm files')
     parser.add_argument("-v", "--version", action="version")
-    parser.add_argument("-o", "--outfilename",required=True,  type=str,help='Output files name')
+    parser.add_argument("-o", "--outfile",type=bool, default=False,help='Whether save the result or not')
+    parser.add_argument("-printout", type=bool, default=True, help='Whether print the result or not')
+    parser.add_argument("-outpath", "--outfilepath", type=str,default='./',help='Output file path')
+
+
+Take mutation Q to H at position 104 of p53 protein as example. Its position in sequence is 9. So the run command as follows:
+
+
+::
+
+     python StatGetPDBlist.py -p 9 -w Q -m H -o True -s ./examples/SEQ/2ocj_A129D.fasta --pdbpath ./examples/PDBtest --dssppath ./examples/DSSPtest --dsspbin mkdssp --psiblastbin  psiblast --hhblitsbin hhblits --psiblastout ./examples/psiout --psiblastpssm ./examples/pssmout --psiblastdb /home/gongjianting/tools/PsiblastDB/swissprot --hhblitsdb /home/gongjianting/tools/HHsuitDB/UniRef30_2020_06 --hhblitsout ./examples/hhblitout --hhblitshhm ./examples/hhmout -outpath ./examples/

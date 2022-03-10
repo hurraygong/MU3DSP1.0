@@ -9,8 +9,6 @@ Sequence-based stability changes prediction
 SCpre-seq, a residue level 3D structure-based prediction tool to assess single point mutation effects on protein thermodynamic stability and applying to dingle-domain monomeric proteins. Given protein sequence with single mutations as the input, the proposed model integrated both sequence level features of mutant residues and residue level mutation-based 3D structure features.
 
 
-.. image:: https://github.com/hurraygong/SCpre-seq/tree/master/pictures/Figure.2.png
-
 SCpre-seq's applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 - SCpre-seq can be applied to predicting stability changes on single monomeric proteins which tertiary structures are unavailable.
