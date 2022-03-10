@@ -8,9 +8,6 @@ Mutation structure preparation
   :align: center
   :width: 300px
 
-Mutation structure preparation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 The samples count for 4 situations when mutation-based structures are available or not on datasets S1676, S543 and S236.
 
 +---------+--------------------------+----------------------------------+--------------------------------+--------------------------------+
