@@ -31,8 +31,8 @@ Downloading
 
 - `S1676 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/S1676_Features_sorted.csv>`_
 
-- `S543 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/Result/S543_Features_sorted.csv>`_
+- `S543 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/Result/S543_sorted.csv>`_
 
-- `S236 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/Result/S236_Features_sorted.csv>`_
+- `S236 <https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/Dataset/Result/S236.csv>`_
 
 
