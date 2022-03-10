@@ -6,7 +6,7 @@ Mutation structure preparation
 
 .. image:: https://raw.githubusercontent.com/hurraygong/SCpre-seq/master/pictures/FigureS1.png
   :align: center
-  :width: 400px
+
 
 The samples count for 4 situations when mutation-based structures are available or not on datasets S1676, S543 and S236.
 
