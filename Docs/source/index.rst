@@ -11,11 +11,10 @@ SCpre-seq, a residue level 3D structure-based prediction tool to assess single p
 
 SCpre-seq's applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-- Mutation-based structure of variants that obtained from G2S which surveys the whole mutations in PDB can be used to makes up for the shortage of structural information for sequence-based methods.
 - SCpre-seq can be applied to predicting stability changes on single monomeric proteins which tertiary structures are unavailable.
 - SCpre-seq can be used to assess both somatic and germline substitution mutations such as p53 in biological and medical research on genomics and proteomics.
-- Compute time of mutation-based structure obtained by G2S is faster than predicting mutation structure.
-- A reliable mutation-based 3D structure information has applied to improve the model's performance.
+- Mutation-based background knowledge of variants obtained from G2S which surveys the whole mutations in PDB can be used to makes up for the shortage of structural information for sequence-based methods.
+- A reliable mutation-based residue-level 3D structure information has applied to improve the model's performance.
 
 Reference
 ^^^^^^^^^
