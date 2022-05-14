@@ -28,6 +28,7 @@ tar xfz UniRef30_2020_06_hhsuite.tar.gz -C ./UniRef30_2020_06
 rm UniRef30_2020_06_hhsuite.tar.gz
 ```
 
+
 #### 3. Install DSSP
 
 Using conda install DSSP programe. (https://anaconda.org/salilab/dssp)
