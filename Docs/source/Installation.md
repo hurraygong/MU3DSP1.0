@@ -7,7 +7,7 @@ git clone https://github.com/hurraygong/SCpre-seq.git
 cd SCpre-seq
 ```
 
-### Install dependencies
+## Install dependencies
 #### 1. Install Anaconda3
 
 Download [Anaconda](https://anaconda.org/) and install. If your computer has alread installed, pass this step.
@@ -22,11 +22,10 @@ Install HHsuite database.
 ```
 mkdir HHsuitDB
 cd HHsuitDB
-wget https://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz
-wget https://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz.md5
-tar -zxvf swissprot.tar.gz
-rm swissprot.tar.gz
-rm swissprot.tar.gz.md5
+wget http://wwwuser.gwdg.de/~compbiol/uniclust/2020_06/UniRef30_2020_06_hhsuite.tar.gz
+mkdir -p UniRef30_2020_06
+tar xfz UniRef30_2020_06_hhsuite.tar.gz -C ./UniRef30_2020_06
+rm UniRef30_2020_06_hhsuite.tar.gz
 ```
 
 #### 3. Install DSSP
@@ -42,7 +41,7 @@ whereis mkdssp
 ```
 #### 4.Install BLAST++
 
-We also recommend to install [BLAST++](https://anaconda.org/bioconda/blast) using `conda`. To install this package with conda run one of the following:
+We also recommend to install [BLAST++]( (https://anaconda.org/bioconda/blast)) using `conda`. To install this package with conda run one of the following:
 ```
 conda install -c bioconda blast
 conda install -c bioconda/label/cf201901 blast
