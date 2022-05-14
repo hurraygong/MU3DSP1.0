@@ -57,4 +57,5 @@ tar -zxvf swissprot.tar.gz
 rm swissprot.tar.gz
 rm swissprot.tar.gz.md5
 ```
+
 Then you can proceed to the next step.
