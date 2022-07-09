@@ -53,7 +53,7 @@ rm swissprot.tar.gz.md5
 ## Clone the package
 
 ```
-git clone https://github.com/hurraygong/SCpre-seq.git
+git clone https://github.com/hurraygong/MU3DSP.git
 cd SCpre-seq
 ```
 ## Usage
